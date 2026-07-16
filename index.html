@@ -14,10 +14,8 @@
       --ink: #1c1917;
       --muted: #57534e;
       --line: #d6d3d1;
-      --surface: #ffffff;
       --wash: #f5f0eb;
       --accent: #0f766e;
-      --accent-soft: #ccfbf1;
     }
 
     body {
@@ -36,7 +34,7 @@
       padding: 3.5rem 1.5rem 4rem;
     }
 
-    header {
+    .page > header {
       margin-bottom: 3rem;
       animation: rise 0.7s ease-out both;
     }
@@ -56,67 +54,79 @@
     }
 
     .lede {
-      margin-top: 1rem;
-      max-width: 36rem;
+      max-width: 42rem;
       font-size: 1.125rem;
       line-height: 1.65;
       color: var(--muted);
-      animation: rise 0.7s ease-out 0.12s both;
     }
 
-    .comparisons {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-    }
-
-    .comparison {
-      animation: rise 0.7s ease-out 0.24s both;
-    }
-
-    .comparison-copy {
-      margin-bottom: 1.25rem;
-      max-width: 40rem;
-    }
-
-    .comparison-copy h2 {
-      font-family: "Instrument Serif", Georgia, serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-
-    .comparison-copy p {
+    .lede-steps {
+      padding-left: 1.25rem;
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--muted);
     }
 
-    .pair {
+    .lede-steps li + li {
+      margin-top: 0.45rem;
+    }
+
+    .columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+      gap: 2.5rem;
+      align-items: start;
+      animation: rise 0.7s ease-out 0.24s both;
     }
 
-    .shot {
+    .single-section {
+      margin-top: 3.5rem;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 1.25rem;
+      animation: rise 0.7s ease-out 0.3s both;
     }
 
-    .shot-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+    .single-section .shot-frame {
+      max-width: 320px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      min-width: 0;
+    }
+
+    .column-title {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .column-notes {
+      padding-left: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .column-notes li + li {
+      margin-top: 0.65rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      line-height: 1.65;
       color: var(--muted);
     }
 
     .shot-frame {
       aspect-ratio: 9 / 16;
       max-height: 560px;
-      background:
-        linear-gradient(145deg, #fafaf9 0%, #e7e5e4 100%);
+      background: linear-gradient(145deg, #fafaf9 0%, #e7e5e4 100%);
       border: 1px solid var(--line);
       display: flex;
       align-items: center;
@@ -175,14 +185,13 @@
         padding: 2.5rem 1.25rem 3rem;
       }
 
-      .pair {
+      .columns {
         grid-template-columns: 1fr;
-        gap: 1.75rem;
+        gap: 2.5rem;
       }
 
       .shot-frame {
         max-height: none;
-        aspect-ratio: 9 / 16;
         max-width: 320px;
         margin: 0 auto;
         width: 100%;
@@ -194,31 +203,68 @@
   <div class="page">
     <header>
       <h1 class="brand">UCD Migration for <em>FreePrints Cards</em></h1>
-      <p class="lede">
-        Side-by-side comparison of the current experience and the UCD migration.
-        Screenshots and notes will be added below.
-      </p>
     </header>
 
-    <main class="comparisons">
-      <section class="comparison" aria-labelledby="comparison-1">
-        <div class="comparison-copy">
-          <h2 id="comparison-1">Comparison</h2>
-          <p>Notes describing the differences will go here.</p>
+    <main>
+      <div class="columns">
+        <section class="column" aria-labelledby="current-title">
+          <h2 class="column-title" id="current-title">Current FC Designer</h2>
+          <ol class="column-notes">
+            <li>The cursor is in the preview area at the top of the page. Keyboard entries are displayed directly in the preview.</li>
+            <li>Updates are done in client with no calls to the server and no delays. The keyboard is always displayed in the text edit mode.</li>
+            <li>The Done button lives at the top right of the page.</li>
+          </ol>
+          <div class="shot-frame">
+            <video src="assets/Current.MP4" controls playsinline preload="metadata"></video>
+          </div>
+        </section>
+
+        <section class="column" aria-labelledby="ucd-title">
+          <h2 class="column-title" id="ucd-title">UCD FC Designer</h2>
+          <ol class="column-notes">
+            <li>In UCD, the cursor displays in a text box. Tapping into that text box makes the keyboard display.</li>
+            <li>Updates are sent to servers and then back to client where they are updated in the preview area.</li>
+            <li>The Done is still up at the top of the page. Tapping it drops the keyboard, leaving a large empty area.</li>
+          </ol>
+          <div class="shot-frame">
+            <video src="assets/UCD.MP4" controls playsinline preload="metadata"></video>
+          </div>
+        </section>
+      </div>
+
+      <section class="single-section" aria-labelledby="simply-title">
+        <h2 class="column-title" id="simply-title">Simply To Impress UCD</h2>
+        <p class="section-intro">UCD is currently used in the STA app.</p>
+        <ol class="column-notes">
+          <li>There is no big blank space because all of the text edit tools live there.</li>
+          <li>The Done button is closer to the text box where the user's eyes are, no Done button at the top.</li>
+          <li>STA is on live servers. This is the expectation for text update speed when FC is running on live servers.</li>
+        </ol>
+        <div class="shot-frame">
+          <video src="assets/SimplyToImpress-UCD.MP4" controls playsinline preload="metadata"></video>
         </div>
-        <div class="pair">
-          <figure class="shot">
-            <figcaption class="shot-label">Before</figcaption>
-            <div class="shot-frame">
-              <span class="shot-placeholder">Screenshot placeholder</span>
-            </div>
-          </figure>
-          <figure class="shot">
-            <figcaption class="shot-label">After</figcaption>
-            <div class="shot-frame">
-              <span class="shot-placeholder">Screenshot placeholder</span>
-            </div>
-          </figure>
+      </section>
+
+      <section class="single-section" aria-labelledby="test-steps-title">
+        <p class="lede" id="test-steps-title">
+          If you want to test UCD on FreePrints Cards yourself you can follow these steps.
+        </p>
+        <ol class="lede-steps">
+          <li>Open the App Distribution app.</li>
+          <li>Select FreePrints Cards</li>
+          <li>Select the latest version of 70.16.0 at the top.</li>
+          <li>Open the app</li>
+          <li>Tap the Main Menu button in the upper-left corner of the home page.</li>
+          <li>Tap Help</li>
+          <li>Tap FAQs</li>
+          <li>Rapidly tap the FC logo at the top of the page 15 times.</li>
+          <li>When the dialog displays enter "Hint Tft". Make sure there are no trailing spaces and mind the capitalization.</li>
+          <li>Tap Stage on the Debug Menu dialog.</li>
+          <li>Select cards-tran-ucd(PRE EU). The app will restart.</li>
+          <li>Select any card.</li>
+        </ol>
+        <div class="shot-frame">
+          <video src="assets/HowToTest-UCD.MP4" controls playsinline preload="metadata"></video>
         </div>
       </section>
     </main>
