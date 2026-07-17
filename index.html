@@ -111,6 +111,13 @@
       color: var(--ink);
     }
 
+    .shot-subhead {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
     .column-notes {
       padding-left: 1.25rem;
       font-size: 1rem;
@@ -145,6 +152,11 @@
       height: 100%;
       object-fit: contain;
       background: #0c0a09;
+    }
+
+    .shot-frame--photo,
+    .shot-frame--photo img {
+      background: #fff;
     }
 
     .shot-placeholder {
@@ -250,6 +262,40 @@
         </ol>
         <div class="shot-frame">
           <video src="assets/SimplyToImpress-UCD.MP4" controls playsinline preload="metadata"></video>
+        </div>
+      </section>
+
+      <section class="single-section" aria-labelledby="problem-title">
+        <h2 class="column-title" id="problem-title">Problem Areas</h2>
+        <p class="section-intro">Lots of empty space in FC when keyboard is down. STA has other controls in that area.</p>
+        <div class="columns">
+          <figure class="column">
+            <h3 class="shot-subhead">FC UCD with keyboard down</h3>
+            <div class="shot-frame shot-frame--photo">
+              <img src="assets/UCD1.png" alt="FreePrints Cards UCD with keyboard down">
+            </div>
+          </figure>
+          <figure class="column">
+            <h3 class="shot-subhead">STA with keyboard down</h3>
+            <div class="shot-frame shot-frame--photo">
+              <img src="assets/STA1.png" alt="Simply To Impress with keyboard down">
+            </div>
+          </figure>
+        </div>
+        <p class="section-intro">We don't have a Done button near the keyboard in FC, only up at the top of the page. Will it be difficult for new customers to find the Done button now that we're directing their eyes to the text box? The Done button at the top is used throughout the app in many pages so we don't want to remove it. Maybe have Done in two places?</p>
+        <div class="columns">
+          <figure class="column">
+            <h3 class="shot-subhead">FC with keyboard displayed</h3>
+            <div class="shot-frame shot-frame--photo">
+              <img src="assets/UCD2.png" alt="FreePrints Cards UCD with Done at top of page">
+            </div>
+          </figure>
+          <figure class="column">
+            <h3 class="shot-subhead">STA with keyboard displayed</h3>
+            <div class="shot-frame shot-frame--photo">
+              <img src="assets/STA2.png" alt="Simply To Impress with Done near the keyboard">
+            </div>
+          </figure>
         </div>
       </section>
 
